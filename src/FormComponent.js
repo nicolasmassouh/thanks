@@ -1,5 +1,6 @@
 import React from 'react'
 import AutoComplete from './AutoComplete'
+
 class FormComponent extends React.Component {
   constructor (props) {
     super(props);
@@ -24,8 +25,7 @@ class FormComponent extends React.Component {
     console.log(dt);
 
     const data = {
-    //"channel":this.state.author.id,
-    "channel":"UFXLSFSMB",
+    "channel":this.state.target.id,
     "text": `Hello ${this.state.target.profile.first_name}, *${this.state.author.profile.first_name}* wanted to thank you for ${this.state.message}... Thanks for that! :slightly_smiling_face: :+1:`
     }
 
