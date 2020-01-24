@@ -48,7 +48,7 @@ class AutoComplete extends React.Component {
           selectedItem,
           openMenu,
         }) => (
-          <div>
+          <div className="list">
             
             <input type="text" name="name" className="question" 
               {...getInputProps({
@@ -58,7 +58,7 @@ class AutoComplete extends React.Component {
     
 
             />
-            <label {...getLabelProps()}></label>
+            <label {...getLabelProps()}><span>From To</span></label>
             <ul {...getMenuProps()}>
               {isOpen
                 ? this.state.datas

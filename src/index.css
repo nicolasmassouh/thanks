@@ -1,17 +1,23 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+h1 {
+  font-weight: 300;
+  margin:0;
 }
 
 .wrapper {
-  padding: 1.5rem;
+  width: 100vw;
 }
 
 .wrapper p {
@@ -23,7 +29,29 @@ code {
 }
 
 .wrapper form div {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: left;
+  position: absolute;
+  overflow: scroll;
+  background: #282c34;
+  z-index:1;
+}
+
+
+.listbox {
+  font-size: 1rem;
+  width: 50vw;
+  background-color:black !important;
+  cursor:pointer;
+}
+
+.listbox:hover {
+  font-weight: bold !important;
 }
 
 /*
@@ -34,7 +62,7 @@ input,
 span,
 label,
 textarea {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Roboto', sans-serif;
   display: block;
   margin: 10px;
   padding: 5px;
@@ -63,6 +91,7 @@ textarea.question {
   overflow-x: hidden; /* Hack to make "rows" attribute apply in Firefox. */
 
 }
+
 /* Underline and Placeholder */
 
 input.question + label,
@@ -85,8 +114,9 @@ textarea.question:focus + label {
 }
 
 input.question:focus,
-input.question:valid {
-  /*padding-top: 3.5rem;*/
+input.question:valid,
+textarea.question:valid {
+  padding-top: 3.5rem;
 }
 
 textarea.question:valid,
@@ -113,6 +143,10 @@ textarea.question:invalid {
   box-shadow: none;
 }
 
+textarea.question:invalid {
+  padding-top: 3.5rem;
+}
+
 input.question + label > span,
 textarea.question + label > span {
   font-weight: 300;
@@ -132,7 +166,7 @@ input[type="submit"] {
   transition: opacity 0.2s ease, background 0.2s ease;
   display: block;
   opacity: 0;
-  margin: 10px 0 0 0;
+  margin: 30px 0 0 0;
   padding: 10px;
   cursor: pointer;
   background: #d6b6ff;

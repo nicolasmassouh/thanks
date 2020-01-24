@@ -1,6 +1,5 @@
 import React from 'react'
 import AutoComplete from './AutoComplete'
-
 import { SLACK_BEARER } from './slackConfig';
 
 class FormComponent extends React.Component {
@@ -19,12 +18,6 @@ class FormComponent extends React.Component {
   
   handleSubmit = (event) => {
     event.preventDefault()
-    const dt = {
-      author: this.state.author.id,
-      target: this.state.target,
-      message: this.state.message,
-    };
-    console.log(dt);
 
     const data = {
     "channel":this.state.target.id,
@@ -45,13 +38,17 @@ class FormComponent extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <form onSubmit={this.handleSubmit}>
-          <AutoComplete onChange={author => this.setState({ author })} />
-          <AutoComplete onChange={target => this.setState({ target })} />  
-          <textarea name="message" rows="2" className="question" id="msg" required autoComplete="off" onInput={({ target }) => this.setState({ message: target.value })}></textarea>
-          <label htmlFor="msg"><span>What's your message ?</span></label>
-          <input type="submit" value="Submit!"  />
-        </form>
+        
+          <form onSubmit={this.handleSubmit}>
+            <AutoComplete onChange={author => this.setState({ author })} />
+            <AutoComplete onChange={target => this.setState({ target })} />  
+            <div className="list">
+              <textarea name="message" rows="2" className="question" id="msg" required autoComplete="off" onInput={({ target }) => this.setState({ message: target.value })}></textarea>
+              <label htmlFor="msg"><span>What's your message ?</span></label>
+              <input type="submit" value="Submit!"  />
+            </div>
+          </form>
+          
       </React.Fragment>
     )
   }
