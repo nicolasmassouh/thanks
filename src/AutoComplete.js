@@ -63,7 +63,9 @@ class AutoComplete extends React.Component {
               {isOpen
                 ? this.state.datas
                     .filter(
-                      item => !inputValue || item.name.includes(inputValue),
+                      item => (!inputValue
+                              || item.profile.display_name.toLowerCase().includes(inputValue.toLowerCase())
+                              || item.profile.real_name.toLowerCase().includes(inputValue.toLowerCase())),
                     )
                     .map((item, index) => (
                       <li
@@ -80,7 +82,7 @@ class AutoComplete extends React.Component {
                           },
                         })}
                       >
-                        @{item.name} ({item.real_name})
+                        @{item.profile.display_name} ({item.profile.real_name})
                       </li>
                     ))
                 : null}
