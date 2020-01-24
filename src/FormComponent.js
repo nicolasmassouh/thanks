@@ -24,17 +24,18 @@ class FormComponent extends React.Component {
     console.log(dt);
 
     const data = {
-    "channel":this.state.author.id,
-    "text": 'Hello `this.state.target.name`, *`this.state.author`* wanted to thank you for `this.state.message`... Thanks for that! :slightly_smiling_face: :+1:'  
+    //"channel":this.state.author.id,
+    "channel":"UFXLSFSMB",
+    "text": `Hello ${this.state.target.profile.first_name}, *${this.state.author.profile.first_name}* wanted to thank you for ${this.state.message}... Thanks for that! :slightly_smiling_face: :+1:`
     }
 
-    fetch('https://slack.com/api/chat.postMessage', {
+    fetch('/slack/api/chat.postMessage', {
         method: 'POST',
         body: JSON.stringify(data),
         headers: new Headers({
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer xoxb-3098545631-921533883047-KrqU9fZsP192u1HdGXnnXjU6'
+          'Authorization': 'Bearer xoxb-3098545631-921533883047-tjp27whRu4c32LrkIev7H1Iz'
         })
       })
   }

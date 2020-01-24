@@ -8,7 +8,7 @@ class AutoComplete extends React.Component {
   }
   componentDidMount() {
     fetch(
-      'https://slack.com/api/users.list?token=xoxb-3098545631-921533883047-KrqU9fZsP192u1HdGXnnXjU6',
+      'https://slack.com/api/users.list?token=xoxb-3098545631-921533883047-tjp27whRu4c32LrkIev7H1Iz',
     )
       .then(response => response.json())
       .then(data => {
@@ -77,7 +77,7 @@ class AutoComplete extends React.Component {
                           },
                         })}
                       >
-                        {item.name}
+                        @{item.name} ({item.real_name})
                       </li>
                     ))
                 : null}
