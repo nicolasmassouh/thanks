@@ -33,6 +33,14 @@ class FormComponent extends React.Component {
           'Authorization': `Bearer ${SLACK_BEARER}`
         })
       })
+      .then(response => {
+        if(response.ok) {
+          console.log(this.props);
+        }
+      })
+      .catch(error => {
+
+      })
   }
 
   render() {
@@ -45,7 +53,7 @@ class FormComponent extends React.Component {
             <div className="list">
               <textarea name="message" rows="2" className="question" id="msg" required autoComplete="off" onInput={({ target }) => this.setState({ message: target.value })}></textarea>
               <label htmlFor="msg"><span>What's your message ?</span></label>
-              <input type="submit" value="Submit!"  />
+              <input type="submit" value="Submit!" onClick={this.onSubmit} />
             </div>
           </form>
           

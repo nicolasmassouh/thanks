@@ -74,12 +74,12 @@ class AutoComplete extends React.Component {
                           key: item.id,
                           index,
                           item,
-                          style: {
-                            backgroundColor:
-                              highlightedIndex === index ? 'lightgray' : null,
-                            fontWeight:
-                              selectedItem === item ? 'bold' : 'normal',
-                          },
+                          // style: {
+                          //   backgroundColor:
+                          //     highlightedIndex === index ? 'lightgray' : null,
+                          //   fontWeight:
+                          //     selectedItem === item ? 'bold' : 'normal',
+                          // },
                         })}
                       >
                         @{item.profile.display_name} ({item.profile.real_name})

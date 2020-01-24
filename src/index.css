@@ -38,8 +38,9 @@ ul {
   text-align: left;
   position: absolute;
   overflow: scroll;
-  background: #282c34;
+  background: black;
   z-index:1;
+  height: 55px;
 }
 
 
