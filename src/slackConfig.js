@@ -1,0 +1,1 @@
+export const SLACK_BEARER = "xoxb-3098545631-921533883047-4nKytacCHY3UlAb83sVOy7zL"; 

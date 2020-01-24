@@ -1,5 +1,8 @@
 import React from 'react'
 import Downshift from 'downshift'
+
+import { SLACK_BEARER } from './slackConfig';
+
 class AutoComplete extends React.Component {
   state = {
     datas: [],
@@ -8,7 +11,7 @@ class AutoComplete extends React.Component {
   }
   componentDidMount() {
     fetch(
-      'https://slack.com/api/users.list?token=xoxb-3098545631-921533883047-tjp27whRu4c32LrkIev7H1Iz',
+      `https://slack.com/api/users.list?token=${SLACK_BEARER}`
     )
       .then(response => response.json())
       .then(data => {

@@ -1,6 +1,8 @@
 import React from 'react'
 import AutoComplete from './AutoComplete'
 
+import { SLACK_BEARER } from './slackConfig';
+
 class FormComponent extends React.Component {
   constructor (props) {
     super(props);
@@ -35,7 +37,7 @@ class FormComponent extends React.Component {
         headers: new Headers({
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer xoxb-3098545631-921533883047-tjp27whRu4c32LrkIev7H1Iz'
+          'Authorization': `Bearer ${SLACK_BEARER}`
         })
       })
   }
