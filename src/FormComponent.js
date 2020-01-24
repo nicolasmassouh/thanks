@@ -44,7 +44,7 @@ class FormComponent extends React.Component {
             <AutoComplete label="To" onChange={target => this.setState({ target })} />
             <div className="list">
               <textarea name="message" rows="2" className="question" id="msg" required autoComplete="off" onInput={({ target }) => this.setState({ message: target.value })}></textarea>
-              <label htmlFor="msg"><span>What's your message ?</span></label>
+              <label htmlFor="msg"><span>I want to thank this person for...</span></label>
               <input type="submit" value="Submit!"  />
             </div>
           </form>
