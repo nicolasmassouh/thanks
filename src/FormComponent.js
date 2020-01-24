@@ -21,7 +21,7 @@ class FormComponent extends React.Component {
 
     const data = {
     "channel":this.state.target.id,
-    "text": `Hello ${this.state.target.profile.first_name}, *${this.state.author.profile.first_name}* wanted to thank you for ${this.state.message}... Thanks for that! :slightly_smiling_face: :+1:`
+    "text": `Hello ${this.state.target.profile.first_name}, <@${this.state.author.id}> wanted to thank you for ${this.state.message}... Thanks for that! :slightly_smiling_face: :+1:`
     }
 
     fetch('/slack/api/chat.postMessage', {
