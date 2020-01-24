@@ -63,9 +63,13 @@ class AutoComplete extends React.Component {
               {isOpen
                 ? this.state.datas
                     .filter(
+                      item => (!item.deleted && !item.is_bot && !item.is_app_user),
+                    )
+                    .filter(
                       item => (!inputValue
                               || item.profile.display_name.toLowerCase().includes(inputValue.toLowerCase())
-                              || item.profile.real_name.toLowerCase().includes(inputValue.toLowerCase())),
+                              || item.profile.real_name.toLowerCase().includes(inputValue.toLowerCase())
+                      ),
                     )
                     .map((item, index) => (
                       <li
