@@ -58,7 +58,7 @@ class AutoComplete extends React.Component {
     
 
             />
-            <label {...getLabelProps()}><span>From To</span></label>
+            <label {...getLabelProps()}><span>{this.props.label}</span></label>
             <ul {...getMenuProps()}>
               {isOpen
                 ? this.state.datas
