@@ -58,14 +58,18 @@ class AutoComplete extends React.Component {
     
 
             />
-            <label {...getLabelProps()}><span>From To</span></label>
+            <label {...getLabelProps()}><span>{this.props.label}</span></label>
             <ul {...getMenuProps()}>
               {isOpen
                 ? this.state.datas
                     .filter(
+                      item => (!item.deleted && !item.is_bot && !item.is_app_user),
+                    )
+                    .filter(
                       item => (!inputValue
                               || item.profile.display_name.toLowerCase().includes(inputValue.toLowerCase())
-                              || item.profile.real_name.toLowerCase().includes(inputValue.toLowerCase())),
+                              || item.profile.real_name.toLowerCase().includes(inputValue.toLowerCase())
+                      ),
                     )
                     .map((item, index) => (
                       <li

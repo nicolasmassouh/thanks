@@ -12,7 +12,7 @@ function App() {
     <div className="App">
       <header className="App-header">
       <img src={picto2} className="picto picto2" />
-      <h1>Thanks Giving</h1>
+      <h1>Thanks Giving!</h1>
       </header>
       <div className="wrapper"> 
       <img src={picto3} className="picto picto3" />

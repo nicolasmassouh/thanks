@@ -48,12 +48,17 @@ class FormComponent extends React.Component {
       <React.Fragment>
         
           <form onSubmit={this.handleSubmit}>
-            <AutoComplete onChange={author => this.setState({ author })} />
-            <AutoComplete onChange={target => this.setState({ target })} />  
+            <AutoComplete label="From" onChange={author => this.setState({ author })} />
+            <AutoComplete label="To" onChange={target => this.setState({ target })} />
             <div className="list">
               <textarea name="message" rows="2" className="question" id="msg" required autoComplete="off" onInput={({ target }) => this.setState({ message: target.value })}></textarea>
+<<<<<<< HEAD
               <label htmlFor="msg"><span>What's your message ?</span></label>
               <input type="submit" value="Submit!" onClick={this.onSubmit} />
+=======
+              <label htmlFor="msg"><span>I want to thank this person for...</span></label>
+              <input type="submit" value="Submit!"  />
+>>>>>>> 7b2c339c4a58f622ec753aa40ef524ccf20b8e66
             </div>
           </form>
           
