@@ -1,41 +1,39 @@
-import React from 'react'
-import Downshift from 'downshift'
+import React from "react";
+import Downshift from "downshift";
 
-import { SLACK_BEARER } from './slackConfig';
+import { SLACK_BEARER } from "./slackConfig";
 
 class AutoComplete extends React.Component {
   state = {
     datas: [],
     isLoading: true,
-    error: null,
-  }
+    error: null
+  };
   componentDidMount() {
-    fetch(
-      `https://slack.com/api/users.list?token=${SLACK_BEARER}`
-    )
+    fetch(`https://slack.com/api/users.list?token=${SLACK_BEARER}`)
       .then(response => response.json())
       .then(data => {
         if (data.ok) {
-          this.setState({ datas: data.members, isLoading: false })
+          this.setState({ datas: data.members, isLoading: false });
         } else {
-          this.setState({ error: data.error, isLoading: false })
+          this.setState({ error: data.error, isLoading: false });
         }
       })
-      .catch(error => this.setState({ error, isLoading: false }))
+      .catch(error => this.setState({ error, isLoading: false }));
   }
 
   render() {
     return (
-        <Downshift
+      <Downshift
         onChange={selection => {
           if (selection) {
-              this.props.onChange(selection)
-            console.log("selection",selection.name)
+            this.props.onChange(selection);
+            console.log("selection", selection);
           } else {
-            console.log("no selection")
+            console.log("no selection");
           }
         }}
-        itemToString={item => (item ? item.name : '')}
+        itemToString={item => (item ? item.real_name : "")}
       >
         {({
           getInputProps,
@@ -46,30 +44,38 @@ class AutoComplete extends React.Component {
           inputValue,
           highlightedIndex,
           selectedItem,
-          openMenu,
+          resultCount,
+          openMenu
         }) => (
           <div className="list">
-            
-            <input type="text" name="name" className="question" 
+            <input
+              type="text"
+              name="name"
+              className="question"
+              required
               {...getInputProps({
                 // here's the interesting part
-                onFocus: openMenu,
+                onFocus: openMenu
               })}
-    
-
             />
-            <label {...getLabelProps()}><span>{this.props.label}</span></label>
+            <label {...getLabelProps()}>
+              <span>{this.props.label}</span>
+            </label>
             <ul {...getMenuProps()}>
               {isOpen
                 ? this.state.datas
                     .filter(
-                      item => (!item.deleted && !item.is_bot && !item.is_app_user),
+                      item => !item.deleted && !item.is_bot && !item.is_app_user
                     )
                     .filter(
-                      item => (!inputValue
-                              || item.profile.display_name.toLowerCase().includes(inputValue.toLowerCase())
-                              || item.profile.real_name.toLowerCase().includes(inputValue.toLowerCase())
-                      ),
+                      item =>
+                        !inputValue ||
+                        item.profile.display_name
+                          .toLowerCase()
+                          .includes(inputValue.toLowerCase()) ||
+                        item.profile.real_name
+                          .toLowerCase()
+                          .includes(inputValue.toLowerCase())
                     )
                     .map((item, index) => (
                       <li
@@ -78,12 +84,10 @@ class AutoComplete extends React.Component {
                           key: item.id,
                           index,
                           item,
-                          // style: {
-                          //   backgroundColor:
-                          //     highlightedIndex === index ? 'lightgray' : null,
-                          //   fontWeight:
-                          //     selectedItem === item ? 'bold' : 'normal',
-                          // },
+                          style: {
+                            backgroundColor:
+                              highlightedIndex === index ? '#f7e357' : null,
+                          },
                         })}
                       >
                         @{item.profile.display_name} ({item.profile.real_name})
@@ -94,13 +98,7 @@ class AutoComplete extends React.Component {
           </div>
         )}
       </Downshift>
-    )
+    );
   }
 }
-export default AutoComplete
-
-
-
-
-
-
+export default AutoComplete;

@@ -1,54 +1,31 @@
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: -apple-system, 'Roboto', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-}
-
-
 h1 {
   font-weight: 300;
-  margin:0;
-}
-
-.wrapper {
-  width: 100vw;
-}
-
-.wrapper p {
-  padding:0;
-  margin-bottom: 3.5rem; 
-  font-size:3rem;
-  font-weight:300;
-
-}
-
-.wrapper form div {
-  margin-bottom: 3rem;
+  margin: 0;
+  color: white;
+  font-size: 3rem;
 }
 
 ul {
   list-style-type: none;
   padding: 0;
   text-align: left;
-  position: absolute;
-  overflow: scroll;
-  background: black;
-  z-index:1;
-  height: 55px;
+  z-index: 1;
+  max-height: 20rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-shadow: 1px 2px 3px 0 #ffee76;
+  background-color: #ffee76ff;
 }
-
 
 .listbox {
   font-size: 1rem;
-  width: 50vw;
-  background-color:black !important;
-  cursor:pointer;
+  color: black;
+  cursor: pointer;
+  line-height: 1em;
+  text-transform: none;
+  font-weight: 400;
+  padding: 0.8rem 1.1rem;
+  white-space: normal;
 }
 
 .listbox:hover {
@@ -63,13 +40,12 @@ input,
 span,
 label,
 textarea {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   display: block;
   margin: 10px;
   padding: 5px;
   border: none;
-  font-size: 22px;
-  resize:none;
+  resize: none;
 }
 
 textarea:focus,
@@ -83,14 +59,13 @@ textarea.question {
   font-size: 2rem;
   font-weight: 300;
   border-radius: 2px;
-  color:white;
+  color: white;
   margin: 0;
   border: none;
-  width: 80%;
+  width: 100%;
   background: rgba(0, 0, 0, 0);
   transition: padding-top 0.2s ease, margin-top 0.2s ease;
   overflow-x: hidden; /* Hack to make "rows" attribute apply in Firefox. */
-
 }
 
 /* Underline and Placeholder */
@@ -128,14 +103,14 @@ textarea.question:focus {
 input.question:focus + label > span,
 input.question:valid + label > span {
   top: -100px;
-  font-size: 22px;
+  font-size: 2.2rem;
   color: #ffee76ff;
 }
 
 textarea.question:focus + label > span,
 textarea.question:valid + label > span {
   top: -150px;
-  font-size: 22px;
+  font-size: 2.2rem;
   color: #ffee76ff;
 }
 
@@ -153,13 +128,12 @@ textarea.question + label > span {
   font-weight: 300;
   margin: 0;
   position: absolute;
-  color: #8F8F8F;
-  font-size: 48px;
+  color: #8f8f8f;
   top: -66px;
   left: 0px;
   -webkit-transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
   transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 input[type="submit"] {
@@ -181,12 +155,14 @@ input[type="submit"]:active {
   background: #b181f1;
 }
 
-input.question:valid ~ input[type="submit"], textarea.question:valid ~ input[type="submit"] {
+input.question:valid ~ input[type="submit"],
+textarea.question:valid ~ input[type="submit"] {
   -webkit-animation: appear 1s forwards;
   animation: appear 1s forwards;
 }
 
-input.question:invalid ~ input[type="submit"], textarea.question:invalid ~ input[type="submit"] {
+input.question:invalid ~ input[type="submit"],
+textarea.question:invalid ~ input[type="submit"] {
   display: none;
 }
 
