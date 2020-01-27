@@ -3,37 +3,61 @@ import Downshift from "downshift";
 
 import { SLACK_BEARER } from "./slackConfig";
 
+import { Icon } from "./shared";
+
 class AutoComplete extends React.Component {
   state = {
     datas: [],
     isLoading: true,
-    error: null
+    error: "null"
   };
+
   componentDidMount() {
-    fetch(`https://slack.com/api/users.list?token=${SLACK_BEARER}`)
-      .then(response => response.json())
-      .then(data => {
-        if (data.ok) {
-          this.setState({ datas: data.members, isLoading: false });
-        } else {
-          this.setState({ error: data.error, isLoading: false });
-        }
-      })
-      .catch(error => this.setState({ error, isLoading: false }));
+    if (localStorage.getItem("users") === null) {
+      fetch(`https://slack.com/api/users.list?token=${SLACK_BEARER}`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.ok) {
+            //this.setState({ datas: data.members, isLoading: false });
+            this.setUsers(data.members);
+          } else {
+            this.setState({ error: "data.error", isLoading: false });
+          }
+        })
+        .catch(error => this.setState({ error, isLoading: false }));
+    } else {
+      this.getUsers();
+    }
+  }
+
+  setUsers(data) {
+    localStorage.setItem("users", JSON.stringify(data));
+    this.setState({
+      datas: JSON.parse(localStorage.getItem("users")),
+      isLoading: true
+    });
+  }
+
+  getUsers() {
+    this.setState({
+      datas: JSON.parse(localStorage.getItem("users")),
+      isLoading: true
+    });
   }
 
   render() {
     return (
       <Downshift
+        onInputValueChange={() => this.setState({ menuIsOpen: false })}
         onChange={selection => {
           if (selection) {
             this.props.onChange(selection);
             console.log("selection", selection);
           } else {
-            console.log("no selection");
+            console.log("no fucking selection!");
           }
         }}
-        itemToString={item => (item ? item.real_name : "")}
+        itemToString={item => (item.profile.display_name ?  (item.profile.display_name || item.real_name) : item.profile.real_name_normalized )} // item.profile.real_name_normalized (item.profile.display_name || item.real_name)
       >
         {({
           getInputProps,
@@ -44,10 +68,17 @@ class AutoComplete extends React.Component {
           inputValue,
           highlightedIndex,
           selectedItem,
-          resultCount,
+          clearSelection,
           openMenu
         }) => (
           <div className="list">
+            {selectedItem ? (
+              <span onClick={clearSelection}>
+                <Icon />
+              </span>
+            ) : (
+              ""
+            )}
             <input
               type="text"
               name="name"
@@ -73,7 +104,7 @@ class AutoComplete extends React.Component {
                         item.profile.display_name
                           .toLowerCase()
                           .includes(inputValue.toLowerCase()) ||
-                        item.profile.real_name
+                        item.profile.real_name_normalized
                           .toLowerCase()
                           .includes(inputValue.toLowerCase())
                     )
@@ -86,11 +117,22 @@ class AutoComplete extends React.Component {
                           item,
                           style: {
                             backgroundColor:
-                              highlightedIndex === index ? '#f7e357' : null,
-                          },
+                              highlightedIndex === index ? "#f7e357" : null
+                          }
                         })}
                       >
-                        @{item.profile.display_name} ({item.profile.real_name})
+                        {item.profile.image_original ? (
+                          <img
+                            src={item.profile.image_original}
+                            alt="profile pictures"
+                          />
+                        ) : (
+                          ""
+                        )}
+                        <span className="profile">
+                          @{item.profile.display_name} - {" "}
+                          {item.profile.real_name_normalized}
+                        </span>
                       </li>
                     ))
                 : null}

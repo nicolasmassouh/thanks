@@ -65,7 +65,7 @@ class FormComponent extends React.Component {
             <label htmlFor="msg">
               <span>I want to thank this person for...</span>
             </label>
-            <input type="submit" value="Submit!" />
+            <input type="submit" value="Send with love!" />
           </div>
         </form>
       </React.Fragment>

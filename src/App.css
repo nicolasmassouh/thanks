@@ -1,13 +1,13 @@
 * {
-    box-sizing: border-box;
-  }
+  box-sizing: border-box;
+}
 
-  body {
-    margin: 0;
-    font-family: -apple-system, "Roboto", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
+body {
+  margin: 0;
+  font-family: -apple-system, "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
 .App {
   text-align: center;
@@ -15,10 +15,19 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  overflow:hidden;
 }
 
-.App-header, .App-wrapper {
-    margin: 0 auto;
+.App-header,
+.App-wrapper {
+  margin: 0 auto;
+}
+
+.App-deco {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: end;
 }
 
 .picto {
@@ -28,7 +37,21 @@
 }
 
 .picto3 {
-  position: absolute;
-  right: 0;
-  top: 54%;
+    width: 7rem;
+    height: Auto;
+    display: block;
+}
+
+
+
+footer {
+    height: 7vh;
+    width: 100vw;
+    background-color: #202020;
+    box-shadow: 0px -2px 4px -1px rgba(0,0,0,0.2), 0px -4px 5px 0px rgba(0,0,0,0.14), 0px -1px 10px 0px rgba(0,0,0,0.12);
+}
+
+
+footer p {
+    color:#464444;
 }

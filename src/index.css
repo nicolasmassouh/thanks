@@ -3,6 +3,7 @@ h1 {
   margin: 0;
   color: white;
   font-size: 3rem;
+  margin:3rem 0;
 }
 
 ul {
@@ -13,8 +14,22 @@ ul {
   max-height: 20rem;
   overflow-y: auto;
   overflow-x: hidden;
-  box-shadow: 1px 2px 3px 0 #ffee76;
   background-color: #ffee76ff;
+}
+
+form {
+    padding: 0 15px;
+}
+
+.list {
+    position: relative;
+}
+
+.list > span {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    cursor:pointer;
 }
 
 .listbox {
@@ -24,12 +39,16 @@ ul {
   line-height: 1em;
   text-transform: none;
   font-weight: 400;
-  padding: 0.8rem 1.1rem;
+  padding: 0.4rem 1.1rem;
   white-space: normal;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
-.listbox:hover {
-  font-weight: bold !important;
+.listbox img {
+    width:40px;
+    height: 40px;
 }
 
 /*
@@ -78,7 +97,7 @@ textarea.question + label {
   padding: 0;
   margin: 0;
   width: 10%;
-  border-top: 1px solid #ffee76ff;
+  border-top: 1px solid #ffee76;
   -webkit-transition: width 0.4s ease;
   transition: width 0.4s ease;
   height: 0px;
@@ -104,14 +123,14 @@ input.question:focus + label > span,
 input.question:valid + label > span {
   top: -100px;
   font-size: 2.2rem;
-  color: #ffee76ff;
+  color: #ffee76;
 }
 
 textarea.question:focus + label > span,
 textarea.question:valid + label > span {
   top: -150px;
   font-size: 2.2rem;
-  color: #ffee76ff;
+  color: #ffee76;
 }
 
 input.question:invalid,
@@ -134,6 +153,7 @@ textarea.question + label > span {
   -webkit-transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
   transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
   font-size: 1.5rem;
+  padding: 0.5rem 0 0.5rem;
 }
 
 input[type="submit"] {
@@ -141,10 +161,13 @@ input[type="submit"] {
   transition: opacity 0.2s ease, background 0.2s ease;
   display: block;
   opacity: 0;
-  margin: 30px 0 0 0;
-  padding: 10px;
+  margin: 3rem 0 0 0;
+  padding: 1rem;
   cursor: pointer;
   background: #d6b6ff;
+  width: 100%;
+  font-size: 1.5rem;
+  FONT-WEIGHT: 400;
 }
 
 input[type="submit"]:hover {

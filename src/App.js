@@ -15,10 +15,14 @@ function App() {
         <h1>Thanks Giving!</h1>
       </header>
       <div className="App-wrapper">
-        <img src={picto3} className="picto picto3" alt="" />
         <FormComponent />
       </div>
-      <img src={picto4} className="picto picto4" alt="" />
+      <div className="App-deco">
+        <img src={picto3} className="picto picto3" alt="" />
+      </div>
+      <footer>
+        <p>launched at @backmarket</p>
+      </footer>
     </div>
   );
 }
