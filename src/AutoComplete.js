@@ -43,6 +43,12 @@ class AutoComplete extends React.Component {
       datas: JSON.parse(localStorage.getItem("users")),
       isLoading: true
     });
+
+    console.log(this.state.datas)
+    for ( var i in this.state.datas) {
+        return console.log(this.state.datas[i])
+    }
+
   }
 
   render() {
@@ -57,7 +63,7 @@ class AutoComplete extends React.Component {
             console.log("no fucking selection!");
           }
         }}
-        itemToString={item => (item.profile.display_name ?  (item.profile.display_name || item.real_name) : item.profile.real_name_normalized )} // item.profile.real_name_normalized (item.profile.display_name || item.real_name)
+        itemToString={item => (item ? item.profile.real_name_normalized : "")}
       >
         {({
           getInputProps,
@@ -130,7 +136,7 @@ class AutoComplete extends React.Component {
                           ""
                         )}
                         <span className="profile">
-                          @{item.profile.display_name} - {" "}
+                          @{item.profile.real_name} - {" "}
                           {item.profile.real_name_normalized}
                         </span>
                       </li>
